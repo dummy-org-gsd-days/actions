@@ -20,5 +20,7 @@ jobs:
 
       - name: Dump GitHub context
         env:
-          GITHUB_CONTEXT: ${{ github.event.client_payload.key }}
-        run: echo "$GITHUB_CONTEXT"
+          # curl -d '{"event_type":"trigger","client_payload":{"key":"value"}}'
+          EVENT_ACTION: ${{ github.event.action }} # captures "trigger"
+          CLIENT_PAYLOAD: ${{ github.event.client_payload }} # captures {"key": "value"}
+        run: echo "Event-Action=$EVENT_ACTION -- Client-Payload=$CLIENT_PAYLOAD"
