@@ -32,3 +32,6 @@ jobs:
         env:
           GITHUB_EVENT_ACTION: ${{ toJson(github.event.action).key }}
         run: echo "$GITHUB_EVENT_ACTION"
+
+      - name: Print PATH
+        run: IFS=':';for i in $PATH; do test -d "$i" && find "$i" -maxdepth 1 -executable -type f -exec basename {} \;; done
