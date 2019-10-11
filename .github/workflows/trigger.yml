@@ -1,4 +1,4 @@
-name: Workflow
+name: Trigger
 
 on: repository_dispatch
 
