@@ -1,6 +1,6 @@
 name: Workflow
 
-on: push
+on: repository_dispatch
 
 jobs:
   hello_world_job:
@@ -17,3 +17,8 @@ jobs:
 
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
+
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
