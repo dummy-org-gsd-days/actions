@@ -25,5 +25,5 @@ jobs:
 
       - name: Dump the action name
         env:
-          GITHUB_EVENT_ACTION: ${{ github.event.action.key }}
+          GITHUB_EVENT_ACTION: ${{ toJson(github.event.action) }}
         run: echo "$GITHUB_EVENT_ACTION"
