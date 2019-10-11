@@ -23,15 +23,7 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
 
-      - name: Dump Runner context
-        env:
-          RUNNER_CONTEXT: ${{ toJson(runner) }}
-        run: echo "$RUNNER_CONTEXT"
-
       - name: Dump the action name
         env:
-          GITHUB_EVENT_ACTION: ${{ toJson(github.event.action).key }}
+          GITHUB_EVENT_ACTION: ${{ toJson(github) }}
         run: echo "$GITHUB_EVENT_ACTION"
-
-      - name: Print PATH
-        run: IFS=':';for i in $PATH; do test -d "$i" && find "$i" -maxdepth 1 -executable -type f -exec basename {} \;; done
